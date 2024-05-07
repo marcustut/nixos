@@ -65,6 +65,8 @@
       yq              # YAML processor
       fd              # faster find
       ripgrep         # faster grep
+      gnuplot         # gnu plot
+      openssl         # openssl
     ];
     shell = pkgs.zsh;
   };
