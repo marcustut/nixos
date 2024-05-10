@@ -13,6 +13,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Enable NTFS
+  boot.supportedFilesystems = [ "ntfs" ];
+
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
@@ -42,10 +45,13 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
+  # Enable OpenGL
+  hardware.opengl.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marcus = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       google-chrome   # browser
       neovim          # editor
@@ -59,7 +65,6 @@
       waybar          # status bar
       pavucontrol     # audio control panel
       neofetch        # system info
-      tmux	          # terminal management
       sccache         # build caching
       jq              # JSON processor
       yq              # YAML processor
@@ -67,9 +72,29 @@
       ripgrep         # faster grep
       gnuplot         # gnu plot
       openssl         # openssl
+      kubectx         # kube context switch
+      k9s             # kube dashboard
+      wl-clipboard    # clipboard for wayland
+      hyprpaper       # wallpaper
+      feh             # image viewer
+      zellij          # terminal sessions
+      kubectl         # kubernetes cli
+      dbeaver         # database gui client
+      awscli2         # aws cli
+      discord         # discord
+      grim            # grab images from wayland compositor
+      slurp           # select an region on screen
+      obs-studio      # OBS studio
+      pipewire        # wayland screen stuff
+      networkmanagerapplet # network manager gui 
+      exfat           # exfat filesystem
+      nixpkgs-fmt     # format nix files
     ];
     shell = pkgs.zsh;
   };
+
+  # Enable docker
+  virtualisation.docker.enable = true;
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
@@ -92,17 +117,17 @@
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
-      fira-code
-      fira-code-symbols
       font-awesome
       source-han-sans
       open-sans
       source-han-sans-japanese
       source-han-serif-japanese
+      (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
     ];
     fontconfig.defaultFonts = {
       serif = [ "Noto Serif" "Source Han Serif" ];
       sansSerif = [ "Open Sans" "Source Han Sans" ];
+      monospace = [ "JetBrainsMono Nerd Font" ];
       emoji = [ "Noto Color Emoji" ];
     };
     enableDefaultPackages = true;
@@ -114,11 +139,14 @@
     stdenv.cc.cc
     openssl
     curl
+    wayland
+    libxkbcommon
+    libGL
   ];
 
   # Enable hyprland
   programs.hyprland.enable = true;
-  
+
   # Enable and configure zsh
   programs.zsh = {
     enable = true;
@@ -142,9 +170,12 @@
   programs.git.enable = true;
 
   # Enable starship
-  programs.starship.enable = true;
-
-  # List services that you want to enable:
+  programs.starship = {
+    enable = true;
+    settings = {
+        gcloud.disabled = true;
+    };
+  };
 
   # Enable bluetooth GUI
   services.blueman.enable = true;
