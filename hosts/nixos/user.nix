@@ -17,6 +17,9 @@
       pavucontrol # audio control panel
       neofetch # system info
       sccache # build caching
+      bat # better cat
+      eza # better ls
+      libnotify # notify-send
       jq # JSON processor
       yq # YAML processor
       fd # faster find
@@ -51,8 +54,8 @@
       obsidian # notetaking app
     ];
     modules = {
-      # cli
       git.enable = true;
+      zsh.enable = true;
     };
   };
 }

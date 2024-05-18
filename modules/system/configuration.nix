@@ -108,30 +108,11 @@
     libGL
   ];
 
+  # Enable zsh
+  programs.zsh.enable = true;
+
   # Enable hyprland
   programs.hyprland.enable = true;
-
-  # Enable and configure zsh
-  programs.zsh = {
-    enable = true;
-    enableCompletion = false;
-    ohMyZsh = {
-      enable = true;
-      plugins = [ "git" ];
-      customPkgs = [
-        pkgs.nix-zsh-completions
-        pkgs.zsh-vi-mode
-        pkgs.zsh-autocomplete
-      ];
-      theme = "robbyrussell";
-    };
-    interactiveShellInit = ''
-      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-    '';
-  };
-
-  # Enable git
-  programs.git.enable = true;
 
   # Enable starship
   programs.starship = {
