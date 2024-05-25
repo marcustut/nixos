@@ -5,5 +5,6 @@
   imports = [
     ./git
     ./zsh
+    ./hyprland
   ];
 }

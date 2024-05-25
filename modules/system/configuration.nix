@@ -12,7 +12,6 @@
   };
 
   # Allow installing unfree packages
-  # TODO: refactor the permittedInsecure and intel drivers
   nixpkgs.config = {
     allowUnfree = true;
     packageOverrides = pkgs: {
@@ -32,7 +31,8 @@
     supportedFilesystems = [ "ntfs" "exfat" ];
   };
 
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true;
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [

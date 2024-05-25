@@ -5,9 +5,17 @@
     # NixOS official package source, using the nixos-23.11 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 
+    # Home manager, for declaratively configure dotfiles
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Hyprland window manager
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
     };
   };
 
