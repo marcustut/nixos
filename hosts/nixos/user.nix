@@ -32,7 +32,6 @@
       beeper # chat apps
       xdg-utils # commands such as xdg-open
       bottom # better htop
-      apple-cursor # apple's cursor theme 
       obsidian # notetaking app
       conda # miniconda
     ];
@@ -40,6 +39,7 @@
       git.enable = true;
       zsh.enable = true;
       hyprland.enable = true;
+      gtk.enable = true;
     };
   };
 }

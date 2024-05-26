@@ -6,5 +6,6 @@
     ./git
     ./zsh
     ./hyprland
+    ./gtk
   ];
 }

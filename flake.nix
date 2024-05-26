@@ -25,10 +25,12 @@
         nixpkgs.lib.nixosSystem {
           modules = [
             { networking.hostName = hostname; }
-            # General configuration (users, networking, sound, etc)
-            ./modules/system/configuration.nix
             # Hardware config (bootloader, kernel modules, filesystems, etc)
             (./. + "/hosts/${hostname}/hardware-configuration.nix")
+            # General configuration (users, networking, sound, etc)
+            ./modules/system/configuration.nix
+            # GNOME configuration
+            ./modules/system/gnome.nix
             home-manager.nixosModules.home-manager
             {
               home-manager = {
