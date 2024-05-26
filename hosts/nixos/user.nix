@@ -17,9 +17,10 @@
       gnuplot # gnu plot
       openssl # openssl
       kubectx # kube context switch
+      fzf # fuzzy finder
       k9s # kube dashboard
       feh # image viewer
-      zellij # terminal sessions
+      tmux # terminal sessions
       kubectl # kubernetes cli
       dbeaver # database gui client
       awscli2 # aws cli

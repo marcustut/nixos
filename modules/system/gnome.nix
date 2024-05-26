@@ -14,6 +14,7 @@
   # Install GNOME Tweaks
   environment.systemPackages = with pkgs; [
     gnome.gnome-tweaks
+    gnomeExtensions.gsconnect # GSConnect (sync clipboard with mobile devices)
   ];
 
   # Exclude some default GNOME packages
