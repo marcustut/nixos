@@ -52,6 +52,7 @@
     curl
     htop
     unzip
+    zip
   ];
 
   # Fonts
@@ -76,13 +77,20 @@
     enableDefaultPackages = true;
   };
 
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  # Enable sound (pipewire).
+  hardware.pulseaudio.enable = false;
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+    alsa.enable = true;
+    jack.enable = true;
+  };
 
   # Enable bluetooth.
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
   # Enable OpenGL
   hardware.opengl = {

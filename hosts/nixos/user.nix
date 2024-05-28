@@ -5,6 +5,7 @@
   config = {
     home.packages = with pkgs; [
       google-chrome # browser
+      firefox # browser
       neovim # editor
       vscode # editor
       gh # github cli
