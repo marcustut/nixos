@@ -1,4 +1,4 @@
-{ pkgs, lib, config, inputs, ... }:
+{ pkgs, lib, config, ... }:
 
 with lib;
 let cfg = config.modules.zsh;
@@ -18,6 +18,7 @@ in {
       networkmanagerapplet # network manager gui 
       lm_sensors # hardware sensors (needed by waybar)
       brightnessctl # brightness control
+      pulseaudio # volume control
     ];
 
     wayland.windowManager.hyprland = {

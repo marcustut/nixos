@@ -1,4 +1,4 @@
-{ config, pkgs, home, inputs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [ ../../modules/default.nix ];
@@ -6,7 +6,7 @@
     home.packages = with pkgs; [
       google-chrome # browser
       firefox # browser
-      neovim # editor
+      unstable.neovim # editor
       vscode # editor
       gh # github cli
       rustup # rust toolchains
