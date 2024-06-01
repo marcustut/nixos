@@ -23,7 +23,7 @@
     gnome-tour
   ]) ++ (with pkgs.gnome; [
     cheese # webcam tool
-    gedit # text editor
+    pkgs.gedit # text editor
     geary # email reader
     tali # poker game
     iagno # go game

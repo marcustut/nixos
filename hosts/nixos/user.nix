@@ -23,7 +23,7 @@
       feh # image viewer
       tmux # terminal sessions
       kubectl # kubernetes cli
-      dbeaver # database gui client
+      dbeaver-bin # database gui client
       awscli2 # aws cli
       discord # discord
       obs-studio # OBS studio
