@@ -15,6 +15,7 @@ in {
       fd # faster find
       ripgrep # faster grep
       fnm # node version manager
+      zsh-autocomplete # zsh autocomplete
     ];
 
     programs.zsh = {
@@ -28,6 +29,7 @@ in {
 
       # Features
       syntaxHighlighting.enable = true;
+      enableCompletion = false;
 
       # Tweak settings for history
       history = {
@@ -58,6 +60,9 @@ in {
 
         # FNM setup
         eval "$(fnm env --use-on-cd)"
+
+        # zsh plugins
+        source ${pkgs.zsh-autocomplete}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
         # Delete a word on backspace
         bindkey '^H' backward-kill-word

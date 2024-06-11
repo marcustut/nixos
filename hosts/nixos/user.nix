@@ -7,6 +7,7 @@
       google-chrome # browser
       firefox # browser
       unstable.neovim # editor
+      neovide # neovim gui
       vscode # editor
       gh # github cli
       rustup # rust toolchains
@@ -36,6 +37,7 @@
       bottom # better htop
       obsidian # notetaking app
       conda # miniconda
+      davinci-resolve # video editor
     ];
     modules = {
       git.enable = true;

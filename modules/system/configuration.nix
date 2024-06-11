@@ -95,9 +95,11 @@
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
+    driSupport32Bit = true;
     extraPackages = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
       intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      intel-compute-runtime # for davinci-resolve
       libvdpau-va-gl
     ];
   };
@@ -148,7 +150,7 @@
   services.openssh.enable = true;
 
   # Set your time zone.
-  time.timeZone = "Europe/Dublin";
+  time.timeZone = "Asia/Kuala_Lumpur";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
