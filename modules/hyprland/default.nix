@@ -218,8 +218,8 @@ in {
         bind = , XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
         # Brightness up/down
-        bind = , XF86MonBrightnessDown, exec, brightnessctl s 10%-
-        bind = , XF86MonBrightnessUp, exec, brightnessctl s +10%
+        bind = , XF86MonBrightnessDown, exec, brightnessctl s 5%-
+        bind = , XF86MonBrightnessUp, exec, brightnessctl s +5%
       '';
     };
   };
