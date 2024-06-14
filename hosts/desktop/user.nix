@@ -10,13 +10,9 @@
       neovide # neovim gui
       vscode # editor
       gh # github cli
-      rustup # rust toolchains
-      gcc13 # GNU C compiler v13
       pavucontrol # audio control panel
-      sccache # build caching
       jq # JSON processor
       yq # YAML processor
-      gnuplot # gnu plot
       openssl # openssl
       kubectx # kube context switch
       fzf # fuzzy finder

@@ -41,6 +41,8 @@
             { nixpkgs.overlays = [ overlay ]; }
             # General configuration (users, networking, sound, etc)
             ./modules/system/configuration.nix
+	    # Custom configuration (drivers, etc.)
+            (./. + "/hosts/${hostname}/configuration.nix")
             # GNOME configuration
             ./modules/system/gnome.nix
             # Home manager
@@ -50,7 +52,7 @@
                 useUserPackages = true;
                 useGlobalPkgs = true;
                 extraSpecialArgs = { inherit inputs unstable; };
-                # Home manager config (configures programs like firefox, zsh, eww, etc)
+                # Home manager config (configures programs like firefox, zsh, etc)
                 users.marcus = (./. + "/hosts/${hostname}/user.nix");
               };
             }
