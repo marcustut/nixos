@@ -64,6 +64,7 @@
     {
       nixosConfigurations = {
         nixos = mkSystem "x86_64-linux" "nixos";
+	desktop = mkSystem "x86_64-linux" "desktop";
       };
     };
 }
