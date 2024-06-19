@@ -28,8 +28,7 @@
       obsidian # notetaking app
       conda # miniconda
       davinci-resolve # video editor
-      bore # remote TCP tunneling
-      anydesk
+      anydesk # remote desktop
     ];
     modules = {
       git.enable = true;

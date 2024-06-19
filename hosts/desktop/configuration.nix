@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ./nginx.nix
+    # Configuration for as a server
+    ./server.nix
   ];
 
   # steam
