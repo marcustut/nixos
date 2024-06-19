@@ -41,7 +41,7 @@
             { nixpkgs.overlays = [ overlay ]; }
             # General configuration (users, networking, sound, etc)
             ./modules/system/configuration.nix
-	    # Custom configuration (drivers, etc.)
+            # Custom configuration (drivers, etc.)
             (./. + "/hosts/${hostname}/configuration.nix")
             # GNOME configuration
             ./modules/system/gnome.nix
@@ -66,7 +66,7 @@
     {
       nixosConfigurations = {
         nixos = mkSystem "x86_64-linux" "nixos";
-	desktop = mkSystem "x86_64-linux" "desktop";
+        desktop = mkSystem "x86_64-linux" "desktop";
       };
     };
 }

@@ -41,12 +41,16 @@
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-    git
-    vim
-    curl
-    htop
-    unzip
-    zip
+    git # version control system
+    vim # defaul editor
+    curl # networking
+    htop # system usage
+    unzip # zip
+    zip # zip
+    gcc # GNU C compiler
+    rustup # rust toolchain installer
+    pipewire # wayland screen stuff
+    pavucontrol # audio control panel
   ];
 
   # Fonts
@@ -124,9 +128,6 @@
   # Enable starship
   programs.starship = {
     enable = true;
-    settings = {
-      gcloud.disabled = true;
-    };
   };
 
   # Enable bluetooth GUI
@@ -161,5 +162,5 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 }

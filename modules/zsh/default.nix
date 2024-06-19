@@ -13,9 +13,10 @@ in {
       bat # better cat
       eza # better ls
       fd # faster find
+      fzf # fuzzy finder
       ripgrep # faster grep
-      fnm # node version manager
       zsh-autocomplete # zsh autocomplete
+      xdg-utils # commands such as xdg-open
     ];
 
     programs.zsh = {
@@ -57,9 +58,6 @@ in {
       initExtra = ''
         # Run neofetch on init
         neofetch
-
-        # FNM setup
-        eval "$(fnm env --use-on-cd)"
 
         # zsh plugins
         source ${pkgs.zsh-autocomplete}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
