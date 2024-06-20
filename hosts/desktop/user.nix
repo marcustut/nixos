@@ -29,6 +29,7 @@
       conda # miniconda
       davinci-resolve # video editor
       anydesk # remote desktop
+      direnv # manages shell environment
     ];
     modules = {
       git.enable = true;

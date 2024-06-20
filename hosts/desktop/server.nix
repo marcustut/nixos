@@ -23,7 +23,9 @@
         #!/usr/bin/env bash
         bore server --min-port 1024 --max-port 2048
       '';
-      wantedBy = [ "multi-user.target" ]; # starts after login
+      serviceConfig = { Restart = "always"; };
+      wantedBy = [ "multi-user.target" ];
+      after = [ "syslog.target" "network.target" ];
     };
     services.bore-ssh = {
       description = "Forward SSH through bore on login";
@@ -32,7 +34,27 @@
         #!/usr/bin/env bash
         bore local 22 --to localhost --port 1024
       '';
-      wantedBy = [ "multi-user.target" ]; # starts after login
+      serviceConfig = { Restart = "always"; };
+      wantedBy = [ "multi-user.target" ];
+      after = [ "syslog.target" "network.target" ];
+    };
+    services.ddns-route53 = {
+      description = "Dynamic DNS for Route 53";
+      environment = {
+        SCHEDULE = "*/30 * * * *";
+      };
+      script = ''
+        #!/usr/bin/env bash
+        HOME=/home/marcus
+        $HOME/ddns-route53 --config $HOME/ddns-route53.yaml
+      '';
+      serviceConfig = {
+        Type = "simple";
+        RestartSec = 2;
+        Restart = "always";
+      };
+      wantedBy = [ "multi-user.target" ];
+      after = [ "syslog.target" "network.target" ];
     };
   };
 
