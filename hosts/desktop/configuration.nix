@@ -2,6 +2,12 @@
 
 {
   imports = [
+    # Hardware config (bootloader, kernel modules, filesystems, etc)
+    ./hardware-configuration.nix
+
+    # GNOME configuration
+    ./gnome.nix
+
     # Configuration for as a server
     ./server.nix
   ];

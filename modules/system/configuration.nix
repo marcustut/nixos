@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   # Nix
@@ -17,7 +17,7 @@
   };
 
   # Configure boot
-  boot = {
+  boot = lib.mkIf (config.networking.hostName != "laptop") {
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;

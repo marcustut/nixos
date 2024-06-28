@@ -4,11 +4,7 @@
   imports = [ ../../modules/default.nix ];
   config = {
     home.packages = with pkgs; [
-      google-chrome # browser
-      firefox # browser
       unstable.neovim # editor
-      neovide # neovim gui
-      vscode # editor
       gh # github cli
       jq # JSON processor
       yq # YAML processor
@@ -17,24 +13,16 @@
       k9s # kube dashboard
       tmux # terminal sessions
       kubectl # kubernetes cli
-      dbeaver-bin # database gui client
       awscli2 # aws cli
-      discord # discord
-      obs-studio # OBS studio
       exfatprogs # exfat filesystem
-      thunderbird # email client
       nixpkgs-fmt # format nix files
-      beeper # chat apps
       bottom # better htop
-      obsidian # notetaking app
-      conda # miniconda
-      davinci-resolve # video editor
     ];
     modules = {
       git.enable = true;
       zsh.enable = true;
-      hyprland.enable = true;
-      gtk.enable = true;
+      hyprland.enable = false;
+      gtk.enable = false;
     };
   };
 }

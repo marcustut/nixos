@@ -1,7 +1,7 @@
 { inputs, pkgs, config, ... }:
 
 {
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
   imports = [
     ./git
     ./zsh

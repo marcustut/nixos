@@ -8,6 +8,9 @@
     # Unstable channel
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    # NixOS Windows Subsystem for Linux (WSL)
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
     # Home manager, for declaratively configure dotfiles
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
@@ -22,7 +25,7 @@
     };
   };
 
-  outputs = { home-manager, nixpkgs, unstable, ... }@inputs:
+  outputs = { home-manager, nixpkgs, nixos-wsl, unstable, ... }@inputs:
     let
       overlay = final: prev:
         let
@@ -34,17 +37,25 @@
       mkSystem = system: hostname:
         nixpkgs.lib.nixosSystem {
           modules = [
+            # Setting the hostname
             { networking.hostName = hostname; }
-            # Hardware config (bootloader, kernel modules, filesystems, etc)
-            (./. + "/hosts/${hostname}/hardware-configuration.nix")
+
             # Overlay, makes "nixpkgs.unstable" available
             { nixpkgs.overlays = [ overlay ]; }
+
             # General configuration (users, networking, sound, etc)
             ./modules/system/configuration.nix
-            # Custom configuration (drivers, etc.)
+
+            # Custom configuration for each host
             (./. + "/hosts/${hostname}/configuration.nix")
-            # GNOME configuration
-            ./modules/system/gnome.nix
+
+            # WSL
+            nixos-wsl.nixosModules.default
+            {
+              wsl.enable = if hostname == "laptop" then true else false;
+              wsl.defaultUser = "marcus";
+            }
+
             # Home manager
             home-manager.nixosModules.home-manager
             {
@@ -65,7 +76,7 @@
     in
     {
       nixosConfigurations = {
-        nixos = mkSystem "x86_64-linux" "nixos";
+        laptop = mkSystem "x86_64-linux" "laptop";
         desktop = mkSystem "x86_64-linux" "desktop";
       };
     };
