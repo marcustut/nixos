@@ -47,7 +47,7 @@ in {
         kctx = "kubectx";
         ls = "eza --icons";
         lla = "eza -la --icons";
-        cat = "bat --paging=never --style=plain";
+        cat = "bat --paging=never";
         vim = "nvim";
         nixrc = "vim ~/.config/nixos";
         nd = "nix develop -c $SHELL";
