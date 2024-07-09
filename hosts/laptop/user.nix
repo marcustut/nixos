@@ -17,6 +17,7 @@
       exfatprogs # exfat filesystem
       nixpkgs-fmt # format nix files
       bottom # better htop
+      direnv # manages shell environment
     ];
     modules = {
       git.enable = true;
