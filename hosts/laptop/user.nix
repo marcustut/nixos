@@ -7,7 +7,7 @@
       unstable.neovim # editor
       gh # github cli
       jq # JSON processor
-      yq # YAML processor
+      yq-go # YAML processor
       openssl # openssl
       kubectx # kube context switch
       k9s # kube dashboard

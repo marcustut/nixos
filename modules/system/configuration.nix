@@ -139,8 +139,21 @@
   # Set your time zone.
   time.timeZone = "Asia/Kuala_Lumpur";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n = {
+    # Select internationalisation properties.
+    defaultLocale = "en_US.UTF-8";
+
+    # Chinese pinyin input
+    inputMethod = {
+      enabled = "ibus";
+      ibus.engines = with pkgs.ibus-engines; [
+        libpinyin
+        rime
+      ];
+    };
+  };
+
+  # Keyboard layout
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";

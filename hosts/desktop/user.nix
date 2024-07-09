@@ -4,14 +4,14 @@
   imports = [ ../../modules/default.nix ];
   config = {
     home.packages = with pkgs; [
-      google-chrome # browser
+      brave # browser
       firefox # browser
       unstable.neovim # editor
       neovide # neovim gui
       vscode # editor
       gh # github cli
       jq # JSON processor
-      yq # YAML processor
+      yq-go # YAML processor
       openssl # openssl
       kubectx # kube context switch
       k9s # kube dashboard
@@ -30,6 +30,7 @@
       davinci-resolve # video editor
       anydesk # remote desktop
       direnv # manages shell environment
+      redisinsight # redis gui
     ];
     modules = {
       git.enable = true;
