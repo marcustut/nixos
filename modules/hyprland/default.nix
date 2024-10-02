@@ -199,7 +199,8 @@ in {
         bind = $mainMod, mouse_up, workspace, e-1
 
         # Screenshot
-        bind = , Print, exec, grim -g "$(slurp)"
+        # bind = , Print, exec, grim -g "$(slurp)"
+        bind = SUPER_SHIFT, S, exec, grim -g "$(slurp)"
 
         # Cycle through windows (not working)
         bind = ALT, Tab, cyclenext

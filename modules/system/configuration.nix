@@ -28,6 +28,9 @@
   # Easiest to use and most distros use this by default.
   networking.networkmanager.enable = true;
 
+  # Configure DNS servers
+  networking.nameservers = [ "1.1.1.1" ];
+
   # Configure firewall
   networking.firewall = {
     enable = true;

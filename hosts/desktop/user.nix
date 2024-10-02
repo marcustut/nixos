@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [ ../../modules/default.nix ];
@@ -6,6 +6,7 @@
     home.packages = with pkgs; [
       brave # browser
       firefox # browser
+      vivaldi # browser
       unstable.neovim # editor
       neovide # neovim gui
       vscode # editor
@@ -27,10 +28,14 @@
       bottom # better htop
       obsidian # notetaking app
       conda # miniconda
-      davinci-resolve # video editor
       anydesk # remote desktop
       direnv # manages shell environment
       redisinsight # redis gui
+      sshs # ssh management ui
+      lazygit # git management ui
+      vlc # video player
+      filezilla # FTP Client
+      inputs.wezterm.packages.${pkgs.system}.default # terminal
     ];
     modules = {
       git.enable = true;

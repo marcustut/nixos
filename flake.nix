@@ -23,6 +23,9 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+
+    # Wezterm
+    wezterm.url = "github:wez/wezterm?dir=nix";
   };
 
   outputs = { home-manager, nixpkgs, nixos-wsl, unstable, ... }@inputs:
