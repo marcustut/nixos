@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   # Gnome
@@ -9,7 +9,23 @@
   };
 
   # Enable dconf
-  programs.dconf.enable = true;
+  programs.dconf = {
+    enable = true;
+    profiles.gdm.databases = [{
+      settings."org/gnome/settings-daemon/plugins/power" = {
+        # - Time inactive in seconds before suspending with AC power
+        #   1200=20 minutes, 0=never
+        sleep-inactive-ac-timeout = lib.gvariant.mkInt32 0;
+        # - What to do after sleep-inactive-ac-timeout
+        #   'blank', 'suspend', 'shutdown', 'hibernate', 'interactive' or 'nothing'
+        # sleep-inactive-ac-type='suspend'
+        sleep-inactive-ac-type = "nothing";
+        # - As above but when on battery
+        # sleep-inactive-battery-timeout=1200
+        # sleep-inactive-battery-type='suspend'
+      };
+    }];
+  };
 
   # Install GNOME Tweaks
   environment.systemPackages = with pkgs; [

@@ -35,6 +35,8 @@
       lazygit # git management ui
       vlc # video player
       filezilla # FTP Client
+      wayvnc # Wayland VNC Server
+      libreoffice # Office software
       inputs.wezterm.packages.${pkgs.system}.default # terminal
     ];
     modules = {
