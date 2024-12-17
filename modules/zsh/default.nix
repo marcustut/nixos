@@ -86,6 +86,8 @@ in {
 
         # Allow tabby to get working directory
         precmd () { echo -n "\x1b]1337;CurrentDir=$(pwd)\x07" }
+
+        export PATH="/bin:$PATH"
       '';
     };
   };

@@ -31,6 +31,7 @@
   environment.systemPackages = with pkgs; [
     gnome.gnome-tweaks
     gnomeExtensions.gsconnect # GSConnect (sync clipboard with mobile devices)
+    xclip # X11 clipboard
   ];
 
   # Exclude some default GNOME packages

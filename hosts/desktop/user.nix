@@ -14,10 +14,11 @@
       jq # JSON processor
       yq-go # YAML processor
       openssl # openssl
-      kubectx # kube context switch
       k9s # kube dashboard
       tmux # terminal sessions
       kubectl # kubernetes cli
+      kubectl-cnpg # kubernetes cnpg plugin
+      kubectx # kube context switch
       dbeaver-bin # database gui client
       awscli2 # aws cli
       discord # discord
@@ -26,17 +27,13 @@
       thunderbird # email client
       nixpkgs-fmt # format nix files
       bottom # better htop
-      obsidian # notetaking app
       conda # miniconda
-      anydesk # remote desktop
+      rustdesk # remote desktop
+      rustdesk-server # remote desktop server
+      hurl # better curl
       direnv # manages shell environment
-      redisinsight # redis gui
       sshs # ssh management ui
       lazygit # git management ui
-      vlc # video player
-      filezilla # FTP Client
-      wayvnc # Wayland VNC Server
-      libreoffice # Office software
       inputs.wezterm.packages.${pkgs.system}.default # terminal
     ];
     modules = {

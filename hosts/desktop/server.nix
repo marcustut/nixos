@@ -11,6 +11,15 @@
     allowedTCPPorts = [ 80 443 7835 ];
     allowedTCPPortRanges = [
       { from = 1024; to = 2048; } # bore server allowed ports
+      { from = 21114; to = 21119; } # rustdesk allowed ports
+    ];
+    allowedUDPPorts = [ 21116 ];
+  };
+
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "0 0 * * *      root      prime-cli backup" # cronjob to perform plane backup
     ];
   };
 
@@ -63,13 +72,6 @@
     enable = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-    virtualHosts."api.marcustut.me" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:5123";
-      };
-    };
     virtualHosts."plane.balaenaquant.com" = {
       enableACME = true;
       forceSSL = true;
@@ -83,7 +85,6 @@
   security.acme = {
     acceptTerms = true;
     certs = {
-      "api.marcustut.me".email = "marcustutorial@hotmail.com";
       "plane.balaenaquant.com".email = "marcuslee@balaenaquant.com";
     };
   };
