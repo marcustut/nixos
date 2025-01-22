@@ -34,6 +34,7 @@
       direnv # manages shell environment
       sshs # ssh management ui
       lazygit # git management ui
+      dig # dns tool
       inputs.wezterm.packages.${pkgs.system}.default # terminal
     ];
     modules = {

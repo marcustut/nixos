@@ -10,6 +10,9 @@
 
     # Configuration for as a server
     ./server.nix
+
+    # Configuration for a k3s cluster
+    ./k3s.nix
   ];
 
   # steam

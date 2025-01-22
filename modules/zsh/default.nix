@@ -52,7 +52,7 @@ in {
         vim = "nvim";
         nixrc = "vim ~/.config/nixos";
         nd = "nix develop -c $SHELL";
-        rebuild = "sudo nixos-rebuild switch --flake $HOME/.config/nixos --fast; notify-send 'Rebuild complete\!'";
+        rebuild = "sudo nixos-rebuild switch --flake $HOME/.config/nixos --fast";
       };
 
       # .zshrc
