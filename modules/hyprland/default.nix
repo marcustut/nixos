@@ -85,10 +85,10 @@ in {
                 passes = 1
             }
 
-            drop_shadow = yes
-            shadow_range = 4
-            shadow_render_power = 3
-            col.shadow = rgba(1a1a1aee)
+            # drop_shadow = yes
+            # shadow_range = 4
+            # shadow_render_power = 3
+            # col.shadow = rgba(1a1a1aee)
         }
 
         animations {
@@ -114,7 +114,7 @@ in {
 
         master {
             # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-            new_is_master = true
+            # new_is_master = true
         }
 
         gestures {

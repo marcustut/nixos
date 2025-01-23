@@ -2,18 +2,15 @@
   description = "NixOS configuration";
 
   inputs = {
-    # NixOS official package source, using the nixos-24.05 branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    # NixOS official package source, using the nixos-24.11 branch here
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
 
     # Unstable channel
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # NixOS Windows Subsystem for Linux (WSL)
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-
     # Home manager, for declaratively configure dotfiles
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -28,7 +25,7 @@
     wezterm.url = "github:wez/wezterm?dir=nix";
   };
 
-  outputs = { home-manager, nixpkgs, nixos-wsl, unstable, ... }@inputs:
+  outputs = { home-manager, nixpkgs, unstable, ... }@inputs:
     let
       overlay = final: prev:
         let
@@ -51,13 +48,6 @@
 
             # Custom configuration for each host
             (./. + "/hosts/${hostname}/configuration.nix")
-
-            # WSL
-            nixos-wsl.nixosModules.default
-            {
-              wsl.enable = if hostname == "laptop" then true else false;
-              wsl.defaultUser = "marcus";
-            }
 
             # Home manager
             home-manager.nixosModules.home-manager

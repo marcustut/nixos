@@ -13,17 +13,22 @@
       k9s # kube dashboard
       tmux # terminal sessions
       kubectl # kubernetes cli
+      kubectx # kubernetes context switch
       awscli2 # aws cli
       exfatprogs # exfat filesystem
       nixpkgs-fmt # format nix files
       bottom # better htop
       direnv # manages shell environment
+      brave # browser
+      dig # dns tool
+      rustdesk # remote desktop
+      hurl # btter curl
     ];
     modules = {
       git.enable = true;
       zsh.enable = true;
-      hyprland.enable = false;
-      gtk.enable = false;
+      hyprland.enable = true;
+      gtk.enable = true;
     };
   };
 }
