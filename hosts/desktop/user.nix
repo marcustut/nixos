@@ -15,7 +15,6 @@
       yq-go # YAML processor
       openssl # openssl
       k9s # kube dashboard
-      tmux # terminal sessions
       kubectl # kubernetes cli
       kubectl-cnpg # kubernetes cnpg plugin
       kubectx # kube context switch
@@ -39,9 +38,10 @@
     ];
     modules = {
       git.enable = true;
+      gtk.enable = true;
       zsh.enable = true;
       hyprland.enable = true;
-      gtk.enable = true;
+      tmux.enable = true;
     };
   };
 }

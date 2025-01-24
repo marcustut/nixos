@@ -11,7 +11,6 @@
       openssl # openssl
       kubectx # kube context switch
       k9s # kube dashboard
-      tmux # terminal sessions
       kubectl # kubernetes cli
       kubectx # kubernetes context switch
       awscli2 # aws cli
@@ -21,14 +20,17 @@
       direnv # manages shell environment
       brave # browser
       dig # dns tool
-      rustdesk # remote desktop
       hurl # btter curl
+      rustdesk # remote desktop
+      rustup # rust manager
+      nodejs # node.js
     ];
     modules = {
       git.enable = true;
-      zsh.enable = true;
-      hyprland.enable = true;
       gtk.enable = true;
+      hyprland.enable = true;
+      zsh.enable = true;
+      tmux.enable = true;
     };
   };
 }

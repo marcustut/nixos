@@ -8,7 +8,7 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       hyprpaper # wallpaper
-      kitty # terminal
+      ghostty # terminal
       wofi # app launcher
       waybar # status bar
       wl-clipboard # clipboard for wayland
@@ -135,9 +135,9 @@ in {
         }
 
         # Example windowrule v1
-        # windowrule = float, ^(kitty)$
+        # windowrule = float, ^(ghostty)$
         # Example windowrule v2
-        # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
+        # windowrulev2 = float,class:^(ghostty)$,title:^(ghostty)$
         # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
 
 
@@ -145,7 +145,7 @@ in {
         $mainMod = ALT
 
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-        bind = $mainMod, RETURN, exec, kitty
+        bind = $mainMod, RETURN, exec, ghostty
         bind = $mainMod, Q, killactive
         bind = $mainMod, M, exit, 
         bind = $mainMod, V, togglefloating, 
