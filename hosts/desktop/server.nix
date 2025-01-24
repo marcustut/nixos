@@ -78,6 +78,55 @@
       wantedBy = [ "multi-user.target" ];
       after = [ "syslog.target" "network.target" ];
     };
+    services.backup-vaultwarden = {
+      description = "Backup vaultwarden";
+      environment = {
+        HOME = "${toString config.users.users.marcus.home}";
+        S3_BUCKET = "balaenaquant-vaultwarden";
+      };
+      path = with pkgs; [ gnutar gzip awscli2 ];
+      before = [ "vaultwarden.service" ];
+      script = ''
+        #!/usr/bin/env bash
+        # Set the script to exit immediately if any command fails
+        set -e
+        
+        DATE=$(date +%Y-%m-%d)
+        BACKUP_DIR=$HOME/backups/vaultwarden
+        BACKUP_FILE=vaultwarden-$DATE.tar.gz
+        CONTAINER=vaultwarden
+        DATA_DIR=/var/lib/vaultwarden
+
+        # create backups directory if it does not exist
+        mkdir -p $BACKUP_DIR
+        
+        # Backup the vaultwarden data directory to the backup directory
+        tar -czf "$BACKUP_DIR/$BACKUP_FILE" -C "$DATA_DIR" .
+
+        # Upload the backup file to s3 bucket
+        aws s3 cp $BACKUP_DIR/$BACKUP_FILE s3://$S3_BUCKET/
+        
+        # To delete files older than 30 days
+        find $BACKUP_DIR/* -mtime +30 -exec rm {} \;
+      '';
+      serviceConfig = {
+        SyslogIdentifier = "backup-vaultwarden";
+        Type = "oneshot";
+        User = "root";
+      };
+      wantedBy = [ "multi-user.target" ];
+    };
+  };
+
+  # systemd timers (cron)
+  systemd.timers.backup-vaultwarden = {
+    description = "Backup vaultwarden daily";
+    wantedBy = [ "multi-user.target" ];
+    timerConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+      Unit = "backup-vaultwarden.service";
+    };
   };
 
   # vaultwarden
@@ -120,6 +169,11 @@
       forceSSL = true;
       locations."/" = {
         proxyPass = "http://10.43.62.251:7000";
+        extraConfig = ''
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection $connection_upgrade;
+        '';
       };
     };
     virtualHosts."api.datasource.hub.balaenaquant.com" = {

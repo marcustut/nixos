@@ -29,7 +29,7 @@
 
   # Install GNOME Tweaks
   environment.systemPackages = with pkgs; [
-    gnome.gnome-tweaks
+    gnome-tweaks
     gnomeExtensions.gsconnect # GSConnect (sync clipboard with mobile devices)
     xclip # X11 clipboard
   ];
@@ -38,9 +38,9 @@
   environment.gnome.excludePackages = (with pkgs; [
     gnome-photos
     gnome-tour
-  ]) ++ (with pkgs.gnome; [
+  ]) ++ (with pkgs; [
     cheese # webcam tool
-    pkgs.gedit # text editor
+    gedit # text editor
     geary # email reader
     tali # poker game
     iagno # go game

@@ -93,8 +93,8 @@
     powerOnBoot = true;
   };
 
-  # Enable OpenGL
-  hardware.opengl = {
+  # Enable graphics
+  hardware.graphics = {
     enable = true;
   };
 
@@ -148,7 +148,8 @@
 
     # Chinese pinyin input
     inputMethod = {
-      enabled = "ibus";
+      enable = true;
+      type = "ibus";
       ibus.engines = with pkgs.ibus-engines; [
         libpinyin
         rime
