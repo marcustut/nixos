@@ -8,6 +8,10 @@
     # Unstable channel
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    # Snap
+    nix-snapd.url = "github:nix-community/nix-snapd";
+    nix-snapd.inputs.nixpkgs.follows = "nixpkgs";
+
     # Home manager, for declaratively configure dotfiles
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
@@ -25,7 +29,7 @@
     wezterm.url = "github:wez/wezterm?dir=nix";
   };
 
-  outputs = { home-manager, nixpkgs, unstable, ... }@inputs:
+  outputs = { home-manager, nixpkgs, nix-snapd, unstable, ... }@inputs:
     let
       overlay = final: prev:
         let
@@ -48,6 +52,12 @@
 
             # Custom configuration for each host
             (./. + "/hosts/${hostname}/configuration.nix")
+
+            # Snap
+            nix-snapd.nixosModules.default
+            {
+              services.snap.enable = true;
+            }
 
             # Home manager
             home-manager.nixosModules.home-manager

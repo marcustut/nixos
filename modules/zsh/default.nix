@@ -9,6 +9,7 @@ in {
     home.packages = with pkgs; [
       libnotify # notify-send
       neofetch # system info
+      zoxide # better cd
       bat # better cat
       eza # better ls
       fd # faster find
@@ -23,14 +24,36 @@ in {
       zsh-fzf-tab # replace completion menu with fzf
     ];
 
+    # Enable starship
+    programs.starship = {
+      enable = false;
+    };
+
+    # Enable direnv support for ZSH
+    programs.direnv.enableZshIntegration = true;
+
     programs.zsh = {
       enable = true;
 
       # Set up oh-my-zsh
       oh-my-zsh = {
         enable = true;
-        plugins = [ "git" ];
+        plugins = [ "git" "colorize" ];
+        theme = "cypher";
       };
+
+      plugins = [
+        {
+          name = "zsh-nix-shell";
+          file = "nix-shell.plugin.zsh";
+          src = pkgs.fetchFromGitHub {
+            owner = "chisui";
+            repo = "zsh-nix-shell";
+            rev = "v0.8.0";
+            sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
+          };
+        }
+      ];
 
       # Features
       syntaxHighlighting.enable = false;
@@ -49,6 +72,7 @@ in {
         k = "kubectl";
         kns = "kubens";
         kctx = "kubectx";
+        cd = "z";
         ls = "eza --icons";
         lla = "eza -la --icons";
         cat = "bat --paging=never --style=plain";
@@ -83,9 +107,11 @@ in {
 
         # Add to path
         export PATH="/bin:$PATH"
+        export PATH="/snap/bin:$PATH" 
 
         # Shell integrations
         eval "$(fzf --zsh)"
+        eval "$(zoxide init zsh)"
       '';
     };
   };

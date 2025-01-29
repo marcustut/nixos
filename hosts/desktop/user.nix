@@ -30,7 +30,6 @@
       rustdesk # remote desktop
       rustdesk-server # remote desktop server
       hurl # better curl
-      direnv # manages shell environment
       sshs # ssh management ui
       lazygit # git management ui
       dig # dns tool
@@ -41,6 +40,7 @@
       gtk.enable = true;
       zsh.enable = true;
       hyprland.enable = true;
+      i3.enable = false;
       tmux.enable = true;
     };
   };

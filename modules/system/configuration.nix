@@ -51,7 +51,6 @@
     unzip # zip
     zip # zip
     gcc # GNU C compiler
-    rustup # rust toolchain installer
     pipewire # wayland screen stuff
     pavucontrol # audio control panel
   ];
@@ -127,11 +126,6 @@
 
   # Enable hyprland
   programs.hyprland.enable = true;
-
-  # Enable starship
-  programs.starship = {
-    enable = true;
-  };
 
   # Enable bluetooth GUI
   services.blueman.enable = true;

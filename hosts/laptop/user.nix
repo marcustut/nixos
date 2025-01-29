@@ -5,11 +5,12 @@
   config = {
     home.packages = with pkgs; [
       unstable.neovim # editor
+      vscode # editor
       gh # github cli
       jq # JSON processor
       yq-go # YAML processor
       openssl # openssl
-      kubectx # kube context switch
+      sshs # ssh manager
       k9s # kube dashboard
       kubectl # kubernetes cli
       kubectx # kubernetes context switch
@@ -17,18 +18,21 @@
       exfatprogs # exfat filesystem
       nixpkgs-fmt # format nix files
       bottom # better htop
-      direnv # manages shell environment
       brave # browser
       dig # dns tool
       hurl # btter curl
       rustdesk # remote desktop
       rustup # rust manager
       nodejs # node.js
+      nushell # better data processing shell
+      remmina # xrdp client
+      dbeaver-bin # database gui client
     ];
     modules = {
       git.enable = true;
       gtk.enable = true;
       hyprland.enable = true;
+      i3.enable = false;
       zsh.enable = true;
       tmux.enable = true;
     };
