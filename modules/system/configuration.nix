@@ -142,12 +142,8 @@
 
     # Chinese pinyin input
     inputMethod = {
-      enable = true;
-      type = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [
-        libpinyin
-        rime
-      ];
+      enabled = "fcitx5";
+      fcitx5.addons = with pkgs; [ fcitx5-gtk fcitx5-chinese-addons ];
     };
   };
 

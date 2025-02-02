@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [ ../../modules/default.nix ];
@@ -19,10 +19,12 @@
       nixpkgs-fmt # format nix files
       bottom # better htop
       brave # browser
+      inputs.zen-browser.packages.${pkgs.system}.default # zen browser
       dig # dns tool
       hurl # btter curl
       rustdesk # remote desktop
-      rustup # rust manager
+      # rustup # rust manager
+      bws # bitwarden cli
       nodejs # node.js
       nushell # better data processing shell
       remmina # xrdp client

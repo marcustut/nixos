@@ -27,6 +27,9 @@
 
     # Wezterm
     wezterm.url = "github:wez/wezterm?dir=nix";
+
+    # Zen browser
+    zen-browser.url = "github:marcustut/zen-browser-flake";
   };
 
   outputs = { home-manager, nixpkgs, nix-snapd, unstable, ... }@inputs:

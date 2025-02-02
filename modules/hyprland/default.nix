@@ -38,6 +38,11 @@ in {
         # Execute your favorite apps at launch
         exec-once = waybar & hyprpaper & swaync & nm-applet
 
+        # For pinyin
+        windowrule = pseudo, fcitx
+        exec-once=fcitx5 -d -r
+        exec-once=fcitx5-remote -r
+
         # Some default env vars.
         env = XCURSOR_SIZE, 24
         env = GTK_THEME, Orchis-Dark-Compact
@@ -200,7 +205,7 @@ in {
 
         # Screenshot
         # bind = , Print, exec, grim -g "$(slurp)"
-        bind = SUPER_SHIFT, S, exec, grim -g "$(slurp)"
+        bind = SUPER_SHIFT, S, exec, grim -g "$(slurp)" -t png - | wl-copy -t image/png
 
         # Cycle through windows (not working)
         bind = ALT, Tab, cyclenext
