@@ -4,7 +4,6 @@
   imports = [ ../../modules/default.nix ];
   config = {
     home.packages = with pkgs; [
-      unstable.neovim # editor
       vscode # editor
       gh # github cli
       jq # JSON processor
@@ -24,11 +23,14 @@
       hurl # btter curl
       rustdesk # remote desktop
       # rustup # rust manager
+      spacedrive # cross-platform drive
       bws # bitwarden cli
       nodejs # node.js
       nushell # better data processing shell
       remmina # xrdp client
       dbeaver-bin # database gui client
+      patchelf # patch binary in nixos
+      zellij # terminal muxer
     ];
     modules = {
       git.enable = true;

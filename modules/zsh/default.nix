@@ -19,7 +19,6 @@ in {
 
       # zsh plugins
       zsh-syntax-highlighting # fish like syntax highlighting
-      zsh-autocomplete # zsh autocomplete
       zsh-autosuggestions # zsh autosuggestions
       zsh-fzf-tab # replace completion menu with fzf
     ];
@@ -90,7 +89,6 @@ in {
 
         # zsh plugins
         source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-        source ${pkgs.zsh-autocomplete}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
         source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
         source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.zsh
 
