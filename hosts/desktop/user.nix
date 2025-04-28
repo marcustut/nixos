@@ -35,6 +35,7 @@
       sshs # ssh management ui
       lazygit # git management ui
       dig # dns tool
+      linuxKernel.packages.linux_zen.xpadneo # xbox controller with bluetooth support
       inputs.wezterm.packages.${pkgs.system}.default # terminal
     ];
     modules = {

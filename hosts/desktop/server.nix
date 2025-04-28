@@ -54,7 +54,7 @@
       script = ''
         #!/usr/bin/env bash
         hbbs &
-        hbbr
+        hbbr -k _
       '';
       serviceConfig = { Restart = "always"; };
       wantedBy = [ "multi-user.target" ];
@@ -155,8 +155,16 @@
     192.168.0.111 arvore.balaenaquant.com
     192.168.0.111 hub.balaenaquant.com
     192.168.0.111 vaultwarden.balaenaquant.com
-    192.168.0.111 stream.datasource.hub.balaenaquant.com
-    192.168.0.111 api.datasource.hub.balaenaquant.com
+    192.168.0.111 minio.balaenaquant.com
+    192.168.0.111 console.minio.balaenaquant.com
+    192.168.0.111 ollama.balaenaquant.com
+    192.168.0.111 adrs.balaenaquant.com
+    192.168.0.111 api.adrs.balaenaquant.com
+    192.168.0.111 api.datasource.balaenaquant.com
+    192.168.0.111 graphiql.datasource.balaenaquant.com
+    192.168.0.111 api.thetradveller.com
+    192.168.0.111 headscale.balaenaquant.com
+    192.168.0.111 docs.datasource.cybotrade.rs
   '';
 
   # nginx
@@ -164,11 +172,14 @@
     enable = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-    virtualHosts."stream.datasource.hub.balaenaquant.com" = {
+    eventsConfig = ''
+      worker_connections  2048;
+    '';
+    virtualHosts."ollama.balaenaquant.com" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "http://10.43.62.251:7000";
+        proxyPass = "http://192.168.0.113:8080";
         extraConfig = ''
           proxy_http_version 1.1;
           proxy_set_header Upgrade $http_upgrade;
@@ -176,11 +187,47 @@
         '';
       };
     };
-    virtualHosts."api.datasource.hub.balaenaquant.com" = {
+    virtualHosts."adrs.balaenaquant.com" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "http://10.43.222.82:7001";
+        proxyPass = "http://10.43.103.73:80";
+      };
+    };
+    virtualHosts."api.adrs.balaenaquant.com" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://10.43.126.182:8000";
+      };
+    };
+    virtualHosts."api.datasource.balaenaquant.com" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://10.43.34.18:3000";
+      };
+    };
+    virtualHosts."graphiql.datasource.balaenaquant.com" = {
+      enableACME = true;
+      forceSSL = true;
+      basicAuth = { admin = "Zaq!@wsXCde#"; };
+      locations."/" = {
+        proxyPass = "http://10.43.112.150:80";
+      };
+    };
+    virtualHosts."api.thetradveller.com" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://10.43.254.114:8000";
+      };
+    };
+    virtualHosts."docs.datasource.cybotrade.rs" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://10.43.170.94:80";
       };
     };
     virtualHosts."vaultwarden.balaenaquant.com" = {
@@ -190,15 +237,38 @@
         proxyPass = "http://localhost:${toString config.services.vaultwarden.config.ROCKET_PORT}";
       };
     };
+    virtualHosts."minio.balaenaquant.com" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://localhost:9000";
+        proxyWebsockets = true;
+      };
+    };
+    virtualHosts."console.minio.balaenaquant.com" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://localhost:9001";
+        proxyWebsockets = true;
+      };
+    };
   };
 
   # ssl certs
   security.acme = {
     acceptTerms = true;
     certs = {
-      "stream.datasource.hub.balaenaquant.com".email = "marcuslee@balaenaquant.com";
-      "api.datasource.hub.balaenaquant.com".email = "marcuslee@balaenaquant.com";
+      "adrs.balaenaquant.com".email = "marcuslee@balaenaquant.com";
+      "api.adrs.balaenaquant.com".email = "marcuslee@balaenaquant.com";
+      "api.datasource.balaenaquant.com".email = "marcuslee@balaenaquant.com";
+      "graphiql.datasource.balaenaquant.com".email = "marcuslee@balaenaquant.com";
+      "api.thetradveller.com".email = "marcuslee@balaenaquant.com";
+      "ollama.balaenaquant.com".email = "marcuslee@balaenaquant.com";
+      "docs.datasource.cybotrade.rs".email = "marcuslee@balaenaquant.com";
       "vaultwarden.balaenaquant.com".email = "marcuslee@balaenaquant.com";
+      "minio.balaenaquant.com".email = "marcuslee@balaenaquant.com";
+      "console.minio.balaenaquant.com".email = "marcuslee@balaenaquant.com";
     };
   };
 }
