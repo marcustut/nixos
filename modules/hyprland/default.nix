@@ -8,7 +8,7 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       hyprpaper # wallpaper
-      kitty # terminal
+      ghostty # terminal
       wofi # app launcher
       waybar # status bar
       wl-clipboard # clipboard for wayland
@@ -38,6 +38,11 @@ in {
         # Execute your favorite apps at launch
         exec-once = waybar & hyprpaper & swaync & nm-applet
 
+        # For pinyin
+        windowrule = pseudo, fcitx
+        exec-once=fcitx5 -d -r
+        exec-once=fcitx5-remote -r
+
         # Some default env vars.
         env = XCURSOR_SIZE, 24
         env = GTK_THEME, Orchis-Dark-Compact
@@ -65,8 +70,8 @@ in {
             gaps_in = 5
             gaps_out = 20
             border_size = 2
-            col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-            col.inactive_border = rgba(595959aa)
+            col.active_border = rgba(595959aa)
+            col.inactive_border = rgb(282828)
 
             layout = dwindle
 
@@ -92,7 +97,7 @@ in {
         }
 
         animations {
-            enabled = yes
+            enabled = false
 
             # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
 
@@ -135,9 +140,9 @@ in {
         }
 
         # Example windowrule v1
-        # windowrule = float, ^(kitty)$
+        # windowrule = float, ^(ghostty)$
         # Example windowrule v2
-        # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
+        # windowrulev2 = float,class:^(ghostty)$,title:^(ghostty)$
         # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
 
 
@@ -145,7 +150,7 @@ in {
         $mainMod = ALT
 
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-        bind = $mainMod, RETURN, exec, kitty
+        bind = $mainMod, RETURN, exec, ghostty
         bind = $mainMod, Q, killactive
         bind = $mainMod, M, exit, 
         bind = $mainMod, V, togglefloating, 
@@ -200,7 +205,7 @@ in {
 
         # Screenshot
         # bind = , Print, exec, grim -g "$(slurp)"
-        bind = SUPER_SHIFT, S, exec, grim -g "$(slurp)"
+        bind = SUPER_SHIFT, S, exec, grim -g "$(slurp)" -t png - | wl-copy -t image/png
 
         # Cycle through windows (not working)
         bind = ALT, Tab, cyclenext

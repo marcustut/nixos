@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   # Nix
@@ -51,7 +51,6 @@
     unzip # zip
     zip # zip
     gcc # GNU C compiler
-    rustup # rust toolchain installer
     pipewire # wayland screen stuff
     pavucontrol # audio control panel
   ];
@@ -128,11 +127,6 @@
   # Enable hyprland
   programs.hyprland.enable = true;
 
-  # Enable starship
-  programs.starship = {
-    enable = true;
-  };
-
   # Enable bluetooth GUI
   services.blueman.enable = true;
 
@@ -148,12 +142,8 @@
 
     # Chinese pinyin input
     inputMethod = {
-      enable = true;
-      type = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [
-        libpinyin
-        rime
-      ];
+      enabled = "fcitx5";
+      fcitx5.addons = with pkgs; [ fcitx5-gtk fcitx5-chinese-addons ];
     };
   };
 

@@ -15,7 +15,6 @@
       yq-go # YAML processor
       openssl # openssl
       k9s # kube dashboard
-      tmux # terminal sessions
       kubectl # kubernetes cli
       kubectl-cnpg # kubernetes cnpg plugin
       kubectx # kube context switch
@@ -31,7 +30,6 @@
       rustdesk # remote desktop
       rustdesk-server # remote desktop server
       hurl # better curl
-      direnv # manages shell environment
       sshs # ssh management ui
       lazygit # git management ui
       dig # dns tool
@@ -40,9 +38,11 @@
     ];
     modules = {
       git.enable = true;
+      gtk.enable = true;
       zsh.enable = true;
       hyprland.enable = true;
-      gtk.enable = true;
+      i3.enable = false;
+      tmux.enable = true;
     };
   };
 }
