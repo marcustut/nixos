@@ -152,19 +152,15 @@
 
   # networking hosts
   networking.extraHosts = ''
-    192.168.0.111 arvore.balaenaquant.com
     192.168.0.111 hub.balaenaquant.com
     192.168.0.111 vaultwarden.balaenaquant.com
     192.168.0.111 minio.balaenaquant.com
     192.168.0.111 console.minio.balaenaquant.com
     192.168.0.111 ollama.balaenaquant.com
-    192.168.0.111 adrs.balaenaquant.com
-    192.168.0.111 api.adrs.balaenaquant.com
     192.168.0.111 api.datasource.balaenaquant.com
     192.168.0.111 graphiql.datasource.balaenaquant.com
     192.168.0.111 api.thetradveller.com
     192.168.0.111 headscale.balaenaquant.com
-    192.168.0.111 docs.datasource.cybotrade.rs
   '';
 
   # nginx
@@ -175,6 +171,7 @@
     eventsConfig = ''
       worker_connections  2048;
     '';
+    clientMaxBodySize = "0";
     virtualHosts."ollama.balaenaquant.com" = {
       enableACME = true;
       forceSSL = true;
@@ -185,20 +182,6 @@
           proxy_set_header Upgrade $http_upgrade;
           proxy_set_header Connection $connection_upgrade;
         '';
-      };
-    };
-    virtualHosts."adrs.balaenaquant.com" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://10.43.103.73:80";
-      };
-    };
-    virtualHosts."api.adrs.balaenaquant.com" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://10.43.126.182:8000";
       };
     };
     virtualHosts."api.datasource.balaenaquant.com" = {
@@ -221,13 +204,6 @@
       forceSSL = true;
       locations."/" = {
         proxyPass = "http://10.43.254.114:8000";
-      };
-    };
-    virtualHosts."docs.datasource.cybotrade.rs" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://10.43.170.94:80";
       };
     };
     virtualHosts."vaultwarden.balaenaquant.com" = {
@@ -259,13 +235,10 @@
   security.acme = {
     acceptTerms = true;
     certs = {
-      "adrs.balaenaquant.com".email = "marcuslee@balaenaquant.com";
-      "api.adrs.balaenaquant.com".email = "marcuslee@balaenaquant.com";
       "api.datasource.balaenaquant.com".email = "marcuslee@balaenaquant.com";
       "graphiql.datasource.balaenaquant.com".email = "marcuslee@balaenaquant.com";
       "api.thetradveller.com".email = "marcuslee@balaenaquant.com";
       "ollama.balaenaquant.com".email = "marcuslee@balaenaquant.com";
-      "docs.datasource.cybotrade.rs".email = "marcuslee@balaenaquant.com";
       "vaultwarden.balaenaquant.com".email = "marcuslee@balaenaquant.com";
       "minio.balaenaquant.com".email = "marcuslee@balaenaquant.com";
       "console.minio.balaenaquant.com".email = "marcuslee@balaenaquant.com";

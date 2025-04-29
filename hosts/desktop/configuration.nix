@@ -6,7 +6,7 @@
     ./hardware-configuration.nix
 
     # GNOME configuration
-    ./gnome.nix
+    # ./gnome.nix
 
     # Configuration for as a headscale server
     ./headscale.nix
