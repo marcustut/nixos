@@ -27,10 +27,10 @@
       options = [ "fmask=0777" "dmask=0777" ];
     };
 
-  # fileSystems."/minio" = {
-  #   device = "/dev/disk/by-uuid/27ed7be6-4663-4815-97f1-b6f691bb1022";
-  #   fsType = "xfs";
-  # };
+  fileSystems."/minio" = {
+    device = "/dev/disk/by-uuid/27ed7be6-4663-4815-97f1-b6f691bb1022";
+    fsType = "xfs";
+  };
 
   swapDevices =
     [{ device = "/dev/disk/by-uuid/aac34f1f-908a-40b5-a009-833266ee2015"; }];
