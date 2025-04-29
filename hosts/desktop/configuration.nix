@@ -8,11 +8,17 @@
     # GNOME configuration
     ./gnome.nix
 
+    # Configuration for as a headscale server
+    ./headscale.nix
+
     # Configuration for as a server
     ./server.nix
 
     # Configuration for a k3s cluster
     ./k3s.nix
+
+    # Configuration for the minio server
+    ./minio.nix
   ];
 
   # steam
