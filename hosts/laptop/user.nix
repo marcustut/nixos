@@ -12,17 +12,22 @@
       sshs # ssh manager
       k9s # kube dashboard
       kubectl # kubernetes cli
+      kubectl-cnpg # kubectl cnpg plugin
+      kubectl-klock # kubectl plugin for watch
+      kubernetes-helm # helm charts for kubernetes
       kubectx # kubernetes context switch
+      eksctl # eks control cli
+      cmctl # cert-manager cli
       awscli2 # aws cli
       exfatprogs # exfat filesystem
       nixpkgs-fmt # format nix files
       bottom # better htop
       brave # browser
       inputs.zen-browser.packages.${pkgs.system}.default # zen browser
+      google-chrome # chrome browser
       dig # dns tool
       hurl # btter curl
       rustdesk # remote desktop
-      # rustup # rust manager
       spacedrive # cross-platform drive
       bws # bitwarden cli
       nodejs # node.js
@@ -31,6 +36,7 @@
       dbeaver-bin # database gui client
       patchelf # patch binary in nixos
       zellij # terminal muxer
+      parsec-bin # remote gaming
     ];
     modules = {
       git.enable = true;
