@@ -31,5 +31,8 @@
 
     # Desktop environment (i3wm)
     ./i3.nix
+
+    # Routing
+    ./routes/minio.nix
   ];
 }
