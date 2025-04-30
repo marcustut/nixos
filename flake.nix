@@ -41,7 +41,7 @@
         {
           unstable = unstablePkgs;
         };
-      mkSystem = system: hostname: user:
+      mkSystem = system: hostname:
         nixpkgs.lib.nixosSystem {
           modules = [
             # Setting the hostname
@@ -70,7 +70,7 @@
                 useGlobalPkgs = true;
                 extraSpecialArgs = { inherit inputs unstable; };
                 # Home manager config (configures programs like firefox, zsh, etc)
-                users.${user} = (./. + "/hosts/${hostname}/user.nix");
+                users.marcus = (./. + "/hosts/${hostname}/user.nix");
               };
             }
           ];
@@ -82,9 +82,9 @@
     in
     {
       nixosConfigurations = {
-        laptop = mkSystem "x86_64-linux" "laptop" "marcus";
-        desktop = mkSystem "x86_64-linux" "desktop" "marcus";
-        gateway = mkSystem "x86_64-linux" "gateway" "balaenaquant";
+        laptop = mkSystem "x86_64-linux" "laptop";
+        desktop = mkSystem "x86_64-linux" "desktop";
+        gateway = mkSystem "x86_64-linux" "gateway";
       };
     };
 }
