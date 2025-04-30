@@ -11,7 +11,7 @@
   ];
 
   services.k3s = {
-    enable = true;
+    enable = false;
     role = "server";
     token = "${config.users.users.marcus.home}/.k3s.token";
     clusterInit = true;
