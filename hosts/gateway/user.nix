@@ -1,9 +1,10 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [ ../../modules/default.nix ];
   config = {
     home.packages = with pkgs; [
+      firefox # browser
       unstable.neovim # editor
       gh # github cli
       jq # JSON processor
@@ -17,6 +18,7 @@
       exfatprogs # exfat filesystem
       nixpkgs-fmt # format nix files
       bottom # better htop
+      rustup # rust toolchain
       rustdesk # remote desktop
       rustdesk-server # remote desktop server
       dig # dns tool
@@ -26,7 +28,7 @@
       gtk.enable = false;
       zsh.enable = true;
       hyprland.enable = false;
-      i3.enable = false;
+      i3.enable = true;
       tmux.enable = true;
     };
   };

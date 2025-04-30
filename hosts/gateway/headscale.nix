@@ -18,6 +18,10 @@ in
     };
   };
 
+  # networking hosts
+  networking.hosts."192.168.0.111" = [ domain ];
+
+  # gateway entry
   services.nginx.virtualHosts.${domain} = {
     forceSSL = true;
     enableACME = true;
@@ -27,6 +31,7 @@ in
     };
   };
 
+  # ssl cert
   security.acme = {
     acceptTerms = true;
     certs.${domain}.email = "marcuslee@balaenaquant.com";

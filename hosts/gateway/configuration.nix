@@ -1,17 +1,35 @@
-{ lib, pkgs, ... }:
+{ ... }:
 
 {
   imports = [
     # Hardware config (bootloader, kernel modules, filesystems, etc)
     ./hardware-configuration.nix
 
-    # Configuration for as a headscale server
+    # DNS Server (dnsmasq)
+    ./dns.nix
+
+    # Dynamic-DNS Server (ddns-route53)
+    ./ddns.nix
+
+    # Reverse proxy (nginx)
+    ./nginx.nix
+
+    # VPN (open-source tailscale)
     ./headscale.nix
 
-    # Configuration for as a server
-    ./server.nix
-
-    # Configuration for a k3s cluster
+    # Kubernetes cluster (k3s)
     ./k3s.nix
+
+    # Password manager (bitwarden alternative)
+    ./vaultwarden.nix
+
+    # Relay server for rustdesk (open-source anydesk)
+    ./rustdesk-relay.nix
+
+    # Configuration for bore tunneling
+    # ./bore.nix
+
+    # Desktop environment (i3wm)
+    ./i3.nix
   ];
 }
