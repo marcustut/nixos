@@ -21,15 +21,13 @@
       awscli2 # aws cli
       exfatprogs # exfat filesystem
       nixpkgs-fmt # format nix files
+      rustup # rust toolchain
       bottom # better htop
-      brave # browser
       inputs.zen-browser.packages.${pkgs.system}.default # zen browser
       google-chrome # chrome browser
       dig # dns tool
       hurl # btter curl
       rustdesk # remote desktop
-      spacedrive # cross-platform drive
-      bws # bitwarden cli
       nodejs # node.js
       nushell # better data processing shell
       remmina # xrdp client
@@ -41,8 +39,8 @@
     modules = {
       git.enable = true;
       gtk.enable = true;
-      hyprland.enable = true;
-      i3.enable = false;
+      hyprland.enable = false;
+      i3.enable = true;
       zsh.enable = true;
       tmux.enable = true;
     };
