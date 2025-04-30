@@ -84,6 +84,7 @@
       nixosConfigurations = {
         laptop = mkSystem "x86_64-linux" "laptop";
         desktop = mkSystem "x86_64-linux" "desktop";
+        gateway = mkSystem "x86_64-linux" "gateway";
       };
     };
 }
