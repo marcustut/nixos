@@ -32,5 +32,8 @@ in
     certs.${domain}.email = "marcuslee@balaenaquant.com";
   };
 
+  # DERP port (https://tailscale.com/kb/1082/firewall-ports)
+  networking.firewall.allowedUDPPorts = [ 3478 ];
+
   environment.systemPackages = [ config.services.headscale.package ];
 }

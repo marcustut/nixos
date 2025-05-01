@@ -35,6 +35,7 @@
       patchelf # patch binary in nixos
       zellij # terminal muxer
       parsec-bin # remote gaming
+      minio-client # minio cli
     ];
     modules = {
       git.enable = true;
