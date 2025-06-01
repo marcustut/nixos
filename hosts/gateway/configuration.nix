@@ -34,5 +34,7 @@
 
     # Routing
     ./routes/minio.nix
+    ./routes/nextcloud.nix
+    ./routes/gitlab.nix
   ];
 }

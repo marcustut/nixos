@@ -14,7 +14,7 @@ in
     forceSSL = true;
     enableACME = true;
     locations."/" = {
-      proxyPass = "http://desktop.balaenaquant.local:9000";
+      proxyPass = "http://nas.balaenaquant.local:9000";
       proxyWebsockets = true;
     };
   };
@@ -22,7 +22,7 @@ in
     forceSSL = true;
     enableACME = true;
     locations."/" = {
-      proxyPass = "http://desktop.balaenaquant.local:9001";
+      proxyPass = "http://nas.balaenaquant.local:9001";
       proxyWebsockets = true;
     };
   };

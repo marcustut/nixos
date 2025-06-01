@@ -15,11 +15,24 @@ in
     settings = {
       dns.magic_dns = false;
       server_url = "https://${domain}:443";
+      derp = {
+        urls = [ ];
+        server = {
+          enabled = true;
+          region_id = 999;
+          region_code = "hub";
+          region_name = "Balaena Quant Hub";
+          stun_listen_addr = "0.0.0.0:3478";
+        };
+      };
     };
   };
 
   # networking hosts
-  networking.hosts."192.168.0.111" = [ domain ];
+  networking = {
+    hosts."192.168.0.111" = [ domain ];
+    firewall.allowedUDPPorts = [ 3478 ]; # DERP port
+  };
 
   # gateway entry
   services.nginx.virtualHosts.${domain} = {
