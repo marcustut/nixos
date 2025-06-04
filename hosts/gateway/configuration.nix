@@ -11,6 +11,9 @@
     # Dynamic-DNS Server (ddns-route53)
     ./ddns.nix
 
+    # SSH
+    ./ssh.nix
+
     # Reverse proxy (nginx)
     ./nginx.nix
 
