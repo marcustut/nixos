@@ -19,6 +19,6 @@
     };
     hosts."192.168.0.111" = [ "gateway.balaenaquant.local" ];
     hosts."192.168.0.113" = [ "mac-mini-m2.balaenaquant.local" ];
-    hosts."192.168.0.114" = [ "desktop.balaenaquant.local" ];
+    hosts."192.168.0.115" = [ "nas.balaenaquant.local" ];
   };
 }

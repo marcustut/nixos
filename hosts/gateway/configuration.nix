@@ -11,6 +11,9 @@
     # Dynamic-DNS Server (ddns-route53)
     ./ddns.nix
 
+    # SSH
+    ./ssh.nix
+
     # Reverse proxy (nginx)
     ./nginx.nix
 
@@ -34,5 +37,7 @@
 
     # Routing
     ./routes/minio.nix
+    ./routes/nextcloud.nix
+    ./routes/gitlab.nix
   ];
 }
