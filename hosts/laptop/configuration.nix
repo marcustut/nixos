@@ -15,7 +15,6 @@
   imports = [
     ./hardware-configuration.nix
     ./tailscale.nix
-    # ../../modules/virtualisation.nix
     ./i3.nix
   ];
 

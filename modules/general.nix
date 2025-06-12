@@ -31,21 +31,10 @@
   # Configure DNS servers
   networking.nameservers = [ "1.1.1.1" ];
 
-  # Configure firewall
-  networking.firewall = {
-    enable = true;
-    allowedTCPPortRanges = [
-      { from = 1714; to = 1764; } # GSConnect
-    ];
-    allowedUDPPortRanges = [
-      { from = 1714; to = 1764; } # GSConnect
-    ];
-  };
-
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
     git # version control system
-    vim # defaul editor
+    vim # default editor
     curl # networking
     htop # system usage
     unzip # zip
@@ -142,7 +131,8 @@
 
     # Chinese pinyin input
     inputMethod = {
-      enabled = "fcitx5";
+      enable = true;
+      type = "fcitx5";
       fcitx5.addons = with pkgs; [ fcitx5-gtk fcitx5-chinese-addons ];
     };
   };

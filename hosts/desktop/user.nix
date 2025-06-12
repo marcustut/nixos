@@ -1,12 +1,11 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
-  imports = [ ../../modules/default.nix ];
+  imports = [ ../../home-manager/default.nix ];
   config = {
     home.packages = with pkgs; [
       brave # browser
       firefox # browser
-      vivaldi # browser
       unstable.neovim # editor
       neovide # neovim gui
       vscode # editor
@@ -26,15 +25,14 @@
       thunderbird # email client
       nixpkgs-fmt # format nix files
       bottom # better htop
-      conda # miniconda
-      rustdesk # remote desktop
+      rustdesk-flutter # remote desktop
       rustdesk-server # remote desktop server
       hurl # better curl
       sshs # ssh management ui
       lazygit # git management ui
       dig # dns tool
-      linuxKernel.packages.linux_zen.xpadneo # xbox controller with bluetooth support
-      inputs.wezterm.packages.${pkgs.system}.default # terminal
+      file # determine file type
+      parsec-bin # remote gaming
     ];
     modules = {
       git.enable = true;

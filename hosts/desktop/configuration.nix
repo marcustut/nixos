@@ -6,13 +6,10 @@
     ./hardware-configuration.nix
 
     # GNOME configuration
-    # ./gnome.nix
+    ./gnome.nix
 
     # VPN (tailscale)
     ./tailscale.nix
-
-    # Configuration for the minio server
-    ./minio.nix
   ];
 
   # steam
@@ -32,5 +29,6 @@
   environment.systemPackages = with pkgs; [
     libimobiledevice # mobile tethering
     ifuse # ios mount
+    (pkgs.callPackage ../../modules/jetbrains-fleet.nix { })
   ];
 }
