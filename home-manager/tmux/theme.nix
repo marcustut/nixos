@@ -183,7 +183,6 @@ with lib;
       default = "#d65d0e";
     };
 
-
     fadedRed = mkOption {
       type = types.str;
       default = "#9d0006";

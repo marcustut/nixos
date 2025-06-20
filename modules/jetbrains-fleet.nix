@@ -1,20 +1,18 @@
-{
-  lib,
-  stdenv,
-  fetchzip,
-  autoPatchelfHook,
-  makeWrapper,
-  makeDesktopItem,
-  copyDesktopItems,
-
-  jetbrains,
-  fontconfig,
-  libgcc,
-  xorg,
-  libGL,
-  alsa-lib,
-  wayland,
-  imagemagick,
+{ lib
+, stdenv
+, fetchzip
+, autoPatchelfHook
+, makeWrapper
+, makeDesktopItem
+, copyDesktopItems
+, jetbrains
+, fontconfig
+, libgcc
+, xorg
+, libGL
+, alsa-lib
+, wayland
+, imagemagick
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "jetbrains-fleet";
@@ -61,7 +59,7 @@ stdenv.mkDerivation (finalAttrs: {
     cp -r $src/lib/runtime $out/fleet/lib/runtime
     cp $src/lib/Fleet.png $out/fleet/lib/Fleet.png
     # cp $src/lib/cds.png $out/fleet/lib/cds.png
-    cp $src/lib/classList.png $out/fleet/lib/classList.png
+    # cp $src/lib/classList.png $out/fleet/lib/classList.png
     cp $src/lib/libapplauncher.so $out/fleet/lib/libapplauncher.so
     cp -r $src/license $out/fleet/license
 

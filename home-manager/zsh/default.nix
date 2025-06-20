@@ -21,6 +21,7 @@ in {
       zsh-syntax-highlighting # fish like syntax highlighting
       zsh-autosuggestions # zsh autosuggestions
       zsh-fzf-tab # replace completion menu with fzf
+      zsh-vi-mode # better vi mode
     ];
 
     # Enable starship
@@ -88,6 +89,7 @@ in {
         neofetch
 
         # zsh plugins
+        source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
         source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
         source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.zsh

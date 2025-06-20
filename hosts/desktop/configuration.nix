@@ -6,19 +6,10 @@
     ./hardware-configuration.nix
 
     # GNOME configuration
-    # ./gnome.nix
+    ./gnome.nix
 
-    # Configuration for as a headscale server
-    ./headscale.nix
-
-    # Configuration for as a server
-    ./server.nix
-
-    # Configuration for a k3s cluster
-    ./k3s.nix
-
-    # Configuration for the minio server
-    ./minio.nix
+    # VPN (tailscale)
+    ./tailscale.nix
   ];
 
   # steam
@@ -38,5 +29,6 @@
   environment.systemPackages = with pkgs; [
     libimobiledevice # mobile tethering
     ifuse # ios mount
+    (pkgs.callPackage ../../modules/jetbrains-fleet.nix { })
   ];
 }

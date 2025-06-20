@@ -4,8 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./tailscale.nix
-    # ./i3.nix
-    ./gnome.nix
+    ./i3.nix
   ];
 
   programs.neovim = {

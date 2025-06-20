@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 
 {
-  imports = [ ../../modules/default.nix ];
+  imports = [ ../../home-manager/default.nix ];
   config = {
     home.packages = with pkgs; [
       vscode # editor

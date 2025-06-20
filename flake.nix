@@ -25,9 +25,6 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    # Wezterm
-    wezterm.url = "github:wez/wezterm?dir=nix";
-
     # Zen browser
     zen-browser.url = "github:marcustut/zen-browser-flake";
   };
@@ -51,7 +48,7 @@
             { nixpkgs.overlays = [ overlay ]; }
 
             # General configuration (users, networking, sound, etc)
-            ./modules/system/configuration.nix
+            ./modules/general.nix
 
             # Custom configuration for each host
             (./. + "/hosts/${hostname}/configuration.nix")
