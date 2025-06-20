@@ -14,4 +14,13 @@
     defaultEditor = true;
     vimAlias = true;
   };
+
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs;
+  };
+
+  environment.systemPackages = [
+      (pkgs.callPackage ../../modules/jetbrains-fleet.nix { })
+  ];
 }
