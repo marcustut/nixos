@@ -5,6 +5,9 @@
     # Hardware config (bootloader, kernel modules, filesystems, etc)
     ./hardware-configuration.nix
 
+    # Docker
+    ../../modules/docker.nix
+
     # GNOME configuration
     ./gnome.nix
 

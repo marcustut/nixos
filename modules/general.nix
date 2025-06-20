@@ -93,9 +93,6 @@
     shell = pkgs.zsh;
   };
 
-  # Enable docker
-  virtualisation.docker.enable = true;
-
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";
 
