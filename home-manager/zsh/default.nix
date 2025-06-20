@@ -108,6 +108,7 @@ in {
         # Add to path
         export PATH="/bin:$PATH"
         export PATH="/snap/bin:$PATH" 
+        export PATH="$HOME/.config/emacs/bin:$PATH" 
 
         # Shell integrations
         eval "$(fzf --zsh)"

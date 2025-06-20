@@ -27,7 +27,7 @@
       google-chrome # chrome browser
       dig # dns tool
       hurl # btter curl
-      rustdesk # remote desktop
+      rustdesk-flutter # remote desktop
       nodejs # node.js
       nushell # better data processing shell
       remmina # xrdp client
