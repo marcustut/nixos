@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./tailscale.nix
+    ./gnome.nix
     ./i3.nix
   ];
 
@@ -14,7 +15,7 @@
     vimAlias = true;
   };
 
-  programs.emacs = {
+  services.emacs = {
     enable = true;
     package = pkgs.emacs;
   };
