@@ -39,9 +39,9 @@ in {
         exec-once = waybar & hyprpaper & swaync & nm-applet
 
         # For pinyin
-        windowrule = pseudo, fcitx
-        exec-once=fcitx5 -d -r
-        exec-once=fcitx5-remote -r
+        # windowrule = pseudo
+        # exec-once=fcitx5 -d -r
+        # exec-once=fcitx5-remote -r
 
         # Some default env vars.
         env = XCURSOR_SIZE, 24

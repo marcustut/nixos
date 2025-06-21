@@ -20,7 +20,10 @@
     package = pkgs.emacs;
   };
 
-  environment.systemPackages = [
-      (pkgs.callPackage ../../modules/jetbrains-fleet.nix { })
+  environment.systemPackages = with pkgs; [
+    libvterm # for vterm in emacs
+    libtool # for vterm in emacs
+    cmake # to compile c projects
+    (callPackage ../../modules/jetbrains-fleet.nix { })
   ];
 }

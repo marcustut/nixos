@@ -114,6 +114,9 @@
   # Enable hyprland
   programs.hyprland.enable = true;
 
+  # Cache and speed up direnv
+  services.lorri.enable = true;
+
   # Enable bluetooth GUI
   services.blueman.enable = true;
 

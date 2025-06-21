@@ -20,7 +20,7 @@
       cmctl # cert-manager cli
       awscli2 # aws cli
       exfatprogs # exfat filesystem
-      nixpkgs-fmt # format nix files
+      nixfmt-rfc-style # format nix files
       rustup # rust toolchain
       bottom # better htop
       inputs.zen-browser.packages.${pkgs.system}.default # zen browser

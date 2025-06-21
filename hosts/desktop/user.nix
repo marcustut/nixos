@@ -23,7 +23,7 @@
       obs-studio # OBS studio
       exfatprogs # exfat filesystem
       thunderbird # email client
-      nixpkgs-fmt # format nix files
+      nixfmt-rfc-style # format nix files
       bottom # better htop
       rustdesk-flutter # remote desktop
       rustdesk-server # remote desktop server
