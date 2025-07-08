@@ -1,9 +1,18 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.zsh;
-in {
-  options.modules.zsh = { enable = mkEnableOption "zsh"; };
+let
+  cfg = config.modules.zsh;
+in
+{
+  options.modules.zsh = {
+    enable = mkEnableOption "zsh";
+  };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
@@ -20,13 +29,12 @@ in {
       # zsh plugins
       zsh-syntax-highlighting # fish like syntax highlighting
       zsh-autosuggestions # zsh autosuggestions
-      zsh-fzf-tab # replace completion menu with fzf
       zsh-vi-mode # better vi mode
     ];
 
     # Enable starship
     programs.starship = {
-      enable = false;
+      enable = true;
     };
 
     # Enable direnv support for ZSH
@@ -38,22 +46,12 @@ in {
       # Set up oh-my-zsh
       oh-my-zsh = {
         enable = true;
-        plugins = [ "git" "colorize" ];
+        plugins = [
+          "git"
+          "colorize"
+        ];
         theme = "cypher";
       };
-
-      plugins = [
-        {
-          name = "zsh-nix-shell";
-          file = "nix-shell.plugin.zsh";
-          src = pkgs.fetchFromGitHub {
-            owner = "chisui";
-            repo = "zsh-nix-shell";
-            rev = "v0.8.0";
-            sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
-          };
-        }
-      ];
 
       # Features
       syntaxHighlighting.enable = false;
@@ -84,7 +82,7 @@ in {
       };
 
       # .zshrc
-      initExtra = ''
+      initContent = ''
         # Run neofetch on init
         neofetch
 
@@ -92,7 +90,6 @@ in {
         source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
         source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-        source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.zsh
 
         # Completion styling
         zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -113,6 +110,8 @@ in {
         # Shell integrations
         eval "$(fzf --zsh)"
         eval "$(zoxide init zsh)"
+        eval "$(direnv hook zsh)"
+        eval "$(starship init zsh)"
       '';
     };
   };

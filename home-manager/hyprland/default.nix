@@ -1,9 +1,18 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.zsh;
-in {
-  options.modules.hyprland = { enable = mkEnableOption "hyprland"; };
+let
+  cfg = config.modules.zsh;
+in
+{
+  options.modules.hyprland = {
+    enable = mkEnableOption "hyprland";
+  };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
@@ -12,10 +21,12 @@ in {
       wofi # app launcher
       waybar # status bar
       wl-clipboard # clipboard for wayland
+      xclip # clipboard for X (for XWayland apps)
+      clipnotify # clipboard server
       grim # grab images from wayland compositor
       slurp # select an region on screen
       swaynotificationcenter # swaync
-      networkmanagerapplet # network manager gui 
+      networkmanagerapplet # network manager gui
       lm_sensors # hardware sensors (needed by waybar)
       brightnessctl # brightness control
       pulseaudio # volume control
@@ -83,7 +94,7 @@ in {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
             rounding = 10
-    
+
             blur {
                 enabled = true
                 size = 3

@@ -26,7 +26,8 @@
   environment.systemPackages = with pkgs; [
     libvterm # for vterm in emacs
     libtool # for vterm in emacs
-    cmake # to compile c projects
+    cmake # build tools
+    gnumake # build tools
     (pkgs.callPackage ../../modules/jetbrains-fleet.nix { })
   ];
 
