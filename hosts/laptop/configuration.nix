@@ -2,11 +2,23 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
-    ./tailscale.nix
-    ./gnome.nix
-    ./i3.nix
+    ./hardware-configuration.nix # Hardware
+    ../../modules/docker.nix # Docker
+    ./tailscale.nix # Tailscale
+    ./gnome.nix # GNOME
   ];
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.marcus = {
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+      "docker"
+    ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.fish;
+  };
+
+  programs.fish.enable = true;
 
   programs.neovim = {
     enable = true;
@@ -23,7 +35,6 @@
   environment.systemPackages = with pkgs; [
     libvterm # for vterm in emacs
     libtool # for vterm in emacs
-    cmake # to compile c projects
     (callPackage ../../modules/jetbrains-fleet.nix { })
   ];
 }

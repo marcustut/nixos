@@ -33,14 +33,15 @@
       dig # dns tool
       file # determine file type
       parsec-bin # remote gaming
+      ghostty # terminal
     ];
     modules = {
       git.enable = true;
       gtk.enable = true;
       zsh.enable = true;
+      tmux.enable = true;
       hyprland.enable = true;
       i3.enable = false;
-      tmux.enable = true;
     };
   };
 }

@@ -18,6 +18,16 @@
     # ./phone-tethering.nix
   ];
 
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.marcus = {
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+      "docker"
+    ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.zsh;
+  };
+
   # emacs
   services.emacs = {
     enable = true;
@@ -26,8 +36,6 @@
   environment.systemPackages = with pkgs; [
     libvterm # for vterm in emacs
     libtool # for vterm in emacs
-    cmake # build tools
-    gnumake # build tools
     (pkgs.callPackage ../../modules/jetbrains-fleet.nix { })
   ];
 

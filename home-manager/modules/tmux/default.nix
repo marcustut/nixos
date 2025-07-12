@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 with lib;
 let
@@ -17,7 +22,9 @@ in
 {
   imports = [ ./theme.nix ];
 
-  options.modules.tmux = { enable = mkEnableOption "tmux"; };
+  options.modules.tmux = {
+    enable = mkEnableOption "tmux";
+  };
 
   config = mkIf cfg.enable {
     programs.tmux = {
@@ -27,7 +34,9 @@ in
       terminal = "tmux-256color";
       historyLimit = 50000;
 
-      extraConfig = with config.theme; with pkgs.tmuxPlugins;
+      extraConfig =
+        with config.theme;
+        with pkgs.tmuxPlugins;
         ''
           # Plugins
           run-shell '${copycat}/share/tmux-plugins/copycat/copycat.tmux'
@@ -49,6 +58,9 @@ in
           # Be faster switching windows
           bind C-n next-window
           bind C-p previous-window
+
+          # Allow escape sequence passthrough
+          set-option -g allow-passthrough on
 
           # Send the bracketed paste mode when pasting
           bind ] paste-buffer -p

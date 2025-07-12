@@ -17,7 +17,6 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       hyprpaper # wallpaper
-      ghostty # terminal
       wofi # app launcher
       waybar # status bar
       wl-clipboard # clipboard for wayland

@@ -3,7 +3,10 @@
 {
   # Nix
   nix = {
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     gc = {
       automatic = true;
       dates = "weekly";
@@ -22,7 +25,10 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    supportedFilesystems = [ "ntfs" "exfat" ];
+    supportedFilesystems = [
+      "ntfs"
+      "exfat"
+    ];
   };
 
   # Easiest to use and most distros use this by default.
@@ -42,6 +48,7 @@
     gcc # GNU C compiler
     pipewire # wayland screen stuff
     pavucontrol # audio control panel
+    home-manager # home manager for configurations
   ];
 
   # Fonts
@@ -59,8 +66,14 @@
       nerd-fonts.jetbrains-mono
     ];
     fontconfig.defaultFonts = {
-      serif = [ "Noto Serif" "Source Han Serif" ];
-      sansSerif = [ "Open Sans" "Source Han Sans" ];
+      serif = [
+        "Noto Serif"
+        "Source Han Serif"
+      ];
+      sansSerif = [
+        "Open Sans"
+        "Source Han Sans"
+      ];
       monospace = [ "JetBrainsMono Nerd Font" ];
       emoji = [ "Noto Color Emoji" ];
     };
@@ -87,17 +100,10 @@
     enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.marcus = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
-    shell = pkgs.zsh;
-  };
-
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";
 
-  # Enable nix-ld 
+  # Enable nix-ld
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     stdenv.cc.cc
@@ -107,9 +113,6 @@
     libxkbcommon
     libGL
   ];
-
-  # Enable zsh
-  programs.zsh.enable = true;
 
   # Enable hyprland
   programs.hyprland.enable = true;
@@ -134,7 +137,10 @@
     inputMethod = {
       enable = true;
       type = "fcitx5";
-      fcitx5.addons = with pkgs; [ fcitx5-gtk fcitx5-chinese-addons ];
+      fcitx5.addons = with pkgs; [
+        fcitx5-gtk
+        fcitx5-chinese-addons
+      ];
     };
   };
 

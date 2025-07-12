@@ -36,13 +36,15 @@
       zellij # terminal muxer
       parsec-bin # remote gaming
       minio-client # minio cli
+      neovide # nvim gui
+      hyperfine # benchmark tool
+      ghostty # terminal
     ];
     modules = {
       git.enable = true;
       gtk.enable = true;
-      hyprland.enable = false;
-      i3.enable = true;
-      zsh.enable = true;
+      hyprland.enable = true;
+      fish.enable = true;
       tmux.enable = true;
     };
   };

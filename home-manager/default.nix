@@ -3,19 +3,15 @@
 {
   home.stateVersion = "24.11";
 
-  programs = {
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
-  };
-
   imports = [
-    ./git
-    ./gtk
-    ./zsh
-    ./hyprland
-    ./i3
-    ./tmux
+    ./packages/cli.nix
+    ./packages/direnv.nix
+    ./modules/git
+    ./modules/gtk
+    ./modules/zsh
+    ./modules/fish
+    ./modules/hyprland
+    ./modules/i3
+    ./modules/tmux
   ];
 }

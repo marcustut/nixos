@@ -29,16 +29,28 @@
     zen-browser.url = "github:marcustut/zen-browser-flake";
   };
 
-  outputs = { home-manager, nixpkgs, nix-snapd, unstable, ... }@inputs:
+  outputs =
+    {
+      home-manager,
+      nixpkgs,
+      nix-snapd,
+      unstable,
+      ...
+    }@inputs:
     let
-      overlay = final: prev:
+      overlay =
+        final: prev:
         let
-          unstablePkgs = import unstable { inherit (prev) system; config.allowUnfree = true; };
+          unstablePkgs = import unstable {
+            inherit (prev) system;
+            config.allowUnfree = true;
+          };
         in
         {
           unstable = unstablePkgs;
         };
-      mkSystem = system: hostname:
+      mkSystem =
+        system: hostname:
         nixpkgs.lib.nixosSystem {
           modules = [
             # Setting the hostname
@@ -52,12 +64,6 @@
 
             # Custom configuration for each host
             (./. + "/hosts/${hostname}/configuration.nix")
-
-            # Snap
-            nix-snapd.nixosModules.default
-            {
-              services.snap.enable = true;
-            }
 
             # Home manager
             home-manager.nixosModules.home-manager
@@ -81,7 +87,6 @@
       nixosConfigurations = {
         laptop = mkSystem "x86_64-linux" "laptop";
         desktop = mkSystem "x86_64-linux" "desktop";
-        gateway = mkSystem "x86_64-linux" "gateway";
       };
     };
 }

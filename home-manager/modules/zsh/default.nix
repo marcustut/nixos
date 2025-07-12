@@ -16,16 +16,6 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      libnotify # notify-send
-      neofetch # system info
-      zoxide # better cd
-      bat # better cat
-      eza # better ls
-      fd # faster find
-      fzf # fuzzy finder
-      ripgrep # faster grep
-      xdg-utils # commands such as xdg-open
-
       # zsh plugins
       zsh-syntax-highlighting # fish like syntax highlighting
       zsh-autosuggestions # zsh autosuggestions
@@ -36,9 +26,6 @@ in
     programs.starship = {
       enable = true;
     };
-
-    # Enable direnv support for ZSH
-    programs.direnv.enableZshIntegration = true;
 
     programs.zsh = {
       enable = true;
